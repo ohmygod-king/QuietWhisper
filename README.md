@@ -72,7 +72,7 @@ QuietWhisper/
 
 Proyek ini dibangun menggunakan:
 
-- [Baileys Pro](https://github.com/WhiskeySockets/Baileys) - Multi-device WhatsApp Web API untuk Node.js.
+- [Baileys Pro](https://www.npmjs.com/package/@fizzxydev/baileys-pro) - Multi-device WhatsApp Web API untuk Node.js.
 - [Node.js](https://nodejs.org) - Runtime environment JavaScript.
 
 ---
