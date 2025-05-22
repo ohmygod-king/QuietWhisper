@@ -1,26 +1,25 @@
 const fs = require('fs')
 const path = require('path')
-const c = require('../config.js')
+const c = require('../Config.js')
 
 const commands = new Map()
 
-// MODIFIED: Baca semua file dari subfolder dalam Commands
 function loadCommands(dir = './Commands') {
     const files = fs.readdirSync(dir)
     for (const file of files) {
         const fullPath = path.join(dir, file)
         if (fs.lstatSync(fullPath).isDirectory()) {
-            loadCommands(fullPath) // Rekursi untuk folder dalam
+            loadCommands(fullPath)
         } else if (file.endsWith('.js')) {
             const command = require(path.resolve(fullPath))
             if (command?.name) {
-                command.category = path.basename(path.dirname(fullPath)) // Tambahkan kategori
+                command.category = path.basename(path.dirname(fullPath))
                 commands.set(command.name, command)
             }
         }
     }
 }
-loadCommands() // Jalankan pemuatan command
+loadCommands()
 
 const welcomePath = path.resolve(__dirname, '../Data/welcome.json')
 let welcomedUsers = []
@@ -40,11 +39,67 @@ module.exports = async (quiet, m) => {
     const args = body.trim().split(/ +/)
     const commandName = args[0]?.startsWith('!') ? args.shift().slice(1).toLowerCase() : null
 
+    if (msg.message?.listResponseMessage) {
+      const rowId = msg.message.listResponseMessage.singleSelectReply.selectedRowId;
+
+      switch (rowId) {
+        case 'l_confess':
+          await quiet.sendMessage(sender, { text: 'Ketik *!confess <nomor> <pesan>* untuk mengirim pesan rahasia.' });
+          break;
+        case 'l_balas':
+          await quiet.sendMessage(sender, { text: 'Ketik *!balas <nomor> <pesan>* untuk membalas pesan rahasia.' });
+          break;
+        case 'l_github':
+          await quiet.sendMessage(sender, { text: 'https://github.com/ohmygod-king' });
+          break;
+        case 'l_discord':
+          await quiet.sendMessage(sender, { text: 'Coming Soon' });
+          break;
+        case 'l_help':
+          const helpCommand = commands.get('help');
+          if (helpCommand) {
+            await helpCommand.execute(quiet, msg, []);
+          } else {
+            await quiet.sendMessage(sender, { text: '❌ Command help tidak ditemukan.' });
+          }
+          break;
+        default:
+          await quiet.sendMessage(sender, { text: '❌ Tombol tidak dikenal.' });
+      }
+    }
+
     if (!welcomedUsers.includes(sender)) {
         welcomedUsers.push(sender)
         fs.writeFileSync(welcomePath, JSON.stringify(welcomedUsers, null, 2))
         await quiet.sendMessage(sender, {
-            text: typeof c.welcomeMessage === 'function' ? c.welcomeMessage(sender) : c.welcomeMessage
+            text: typeof c.welcomeMessage === 'function' ? c.welcomeMessage(sender) : c.welcomeMessage,
+            footer: 'QuietWhisper',
+            buttonText: 'Pilih Menu',
+            sections: [
+              {
+                title: '✉️ Fitur Confess',
+                rows: [
+                  { title: 'Kirim Confess', rowId: 'l_confess', description: 'Kirim pesan anonim ke seseorang' },
+                  { title: 'Balas Confess', rowId: 'l_balas', description: 'Balas pesan anonim yang Anda terima' },
+                  ],
+              },
+              {
+                title: '🖥️ Developer',
+                rows: [
+                  {
+                    title: 'Github',
+                    rowId: 'l_github',
+                    description: 'Prince | @ohmygod-king'
+                  },
+                  {
+                    title: 'Discord',
+                    rowId: 'l_discord',
+                    description: 'QuietxStore'
+                  }
+                ]
+              }
+            ],
+            headerType: 1
         })
     }
 

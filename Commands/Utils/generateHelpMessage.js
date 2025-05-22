@@ -20,7 +20,6 @@ function generateHelpMessage(commandsDir = path.join(__dirname, '..', '..', 'Com
     }
   });
 
-  // Format help message
   let message = `*┏━━ ⭑ QuietWhisper Menu ⭑━━┓*\n`;
 
   for (const [category, cmds] of Object.entries(categories)) {
