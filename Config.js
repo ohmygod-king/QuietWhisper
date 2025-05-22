@@ -1,5 +1,5 @@
 const config = {
-  owner: ["6285872099349"],
+  owner: ["628xxxxxx"],
   prefix: "!",
   botName: "QuietWhisper",
 }
@@ -12,10 +12,8 @@ Selamat datang!
 
 Kirim pesan rahasia secara anonim ke siapa pun, tanpa mengungkap identitasmu.
 
-Contoh penggunaan:
-• ${config.prefix}confess 628xxxxxxx Hai... aku suka kamu sejak lama.
-
 Pesanmu akan dikirim *anonim* ke nomor tujuan.
+Silahkan pilih menu untuk melanjutkan.
 
 ──── Info Bot ────
 • Bot : *${config.botName}*
