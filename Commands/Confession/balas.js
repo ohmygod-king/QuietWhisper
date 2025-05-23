@@ -40,7 +40,7 @@ module.exports = {
     const recipient = sender === entry.from ? entry.to : entry.from;
 
     const replyMsg = 
-`───── Balasan ─────
+`─────  Balasan  ─────
 
 "${content}"
 
