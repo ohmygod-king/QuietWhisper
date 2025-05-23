@@ -53,10 +53,10 @@ module.exports = {
 
     await new Promise(r => setTimeout(r, 1200));
     
-    const imageBanner = 'https://i.ibb.co/RTrTGdW1/banner.png';
+    const imagePath = path.resolve(__dirname, '../../.assets/banner.png');
     
     await quiet.sendMessage(`${target}@s.whatsapp.net`, {
-      image: { url: imageBanner },
+      image: { url: imagePath },
       text:
 `─────  Pesan Rahasia  ─────
 
