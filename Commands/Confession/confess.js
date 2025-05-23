@@ -61,8 +61,7 @@ module.exports = {
 
 "${content}"
 
-ID Pengirim : ${id}
-
+> ID Confess : ${id}
 Balas dengan perintah:
 ${prefix}balas ${id} Pesanmu
 
