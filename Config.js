@@ -2,10 +2,10 @@ const config = {
   owner: ["628xxxxxx"],
   prefix: "!",
   botName: "QuietWhisper",
-}
+};
 
-config.welcomeMessage = (msg) => {
-  const name = msg.pushName || msg.key.remoteJid.split('@')[0];
+config.welcomeMessage = (msg = {}) => {
+  const name = msg.pushName || (msg.key?.participant || msg.key?.remoteJid || 'User').split('@')[0];
   return `
 ───  ${config.botName}  ───
 
@@ -23,6 +23,6 @@ Silahkan pilih menu untuk melanjutkan.
 
 Terima kasih telah menggunakan ${config.botName}.
 Jaga etika, gunakan fitur ini dengan bijak.
-`}
+`};
 
 module.exports = config;
