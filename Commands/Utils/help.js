@@ -16,7 +16,7 @@ module.exports = {
 
     await quiet.sendMessage(sender, {
       text: 'Silakan pilih salah satu menu berikut:',
-      title: `━━━ ⭑ QuietWhisper Menu ⭑━━━`,
+      title: `━━━ ⭑ QuietWhisper ⭑ ━━━`,
       buttonText: 'Pilih Menu',
       sections: [
         {
