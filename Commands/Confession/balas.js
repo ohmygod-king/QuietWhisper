@@ -15,6 +15,7 @@ module.exports = {
     const id = args[0]?.toUpperCase();
     const content = args.slice(1).join(' ');
     const prefix = c.prefix;
+    const banner = "https://i.ibb.co/RTrTGdW1/banner.png"
 
     if (!id || !content || content.length > 500) {
       return quiet.sendMessage(sender, { text: '❌ Format salah!\nContoh: !balas ABC12 Pesanmu (maks 500 karakter)' });
@@ -51,7 +52,10 @@ ${prefix}balas ${id} aku sayang kamu
 [!] Pesan ini ditulis oleh seseorang, bot hanya menyampaikan
 ────────────────────────`;
 
-    await quiet.sendMessage(recipient, { text: replyMsg });
+    await quiet.sendMessage(recipient, {
+      image: { url: banner },
+      text: replyMsg
+    });
 
     if (!entry.messages) entry.messages = [];
     entry.messages.push({
