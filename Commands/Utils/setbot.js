@@ -15,12 +15,12 @@ module.exports = {
                 let imageBuffer;
 
                 if (msg.message?.extendedTextMessage?.contextInfo?.quotedMessage?.imageMessage) {
-                    // Jika reply gambar
+
                     const quoted = msg.message.extendedTextMessage.contextInfo;
                     const media = await quiet.downloadMediaMessage(quoted);
                     imageBuffer = media;
                 } else if (value.startsWith('http')) {
-                    // Jika dari link
+
                     try {
                         const response = await axios.get(value, { responseType: 'arraybuffer' });
                         imageBuffer = Buffer.from(response.data, 'binary');
