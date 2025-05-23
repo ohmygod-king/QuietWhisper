@@ -15,13 +15,12 @@ function generateId(length = 5) {
 module.exports = {
   name: 'confess',
   description: 'Mengirimkan pesan Confess.',
-  category: 'Utils',
+  category: 'Confession',
   async execute(quiet, msg, args) {
     const sender = msg.key.remoteJid;
     const target = args[0];
     const content = args.slice(1).join(' ');
     const prefix = c.prefix;
-    const imageBanner = "https://i.ibb.co/RTrTGdW1/banner.png";
 
     if (!target || !content || content.length > 500) {
       return quiet.sendMessage(sender, { text: '❌ Format salah!\nContoh: !confess 628xxx Pesanmu (maks 500 karakter)' });
@@ -53,7 +52,9 @@ module.exports = {
     fs.writeFileSync(cooldownPath, JSON.stringify(cooldown, null, 2));
 
     await new Promise(r => setTimeout(r, 1200));
-
+    
+    const imageBanner = 'https://i.ibb.co/RTrTGdW1/banner.png';
+    
     await quiet.sendMessage(`${target}@s.whatsapp.net`, {
       image: { url: imageBanner },
       text:
