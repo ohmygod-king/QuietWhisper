@@ -1,19 +1,22 @@
 {
-    "name": "QuietWhisper",
+    "name": "WhatsApp Confession Bot",
     "version": "1.0",
-    "description": "QuietWhisper adalah bot WhatsApp berbasis Node.js menggunakan Baileys Library yang memungkinkan pengguna mengirim _confession_ atau pesan rahasia secara anonim ke pengguna WhatsApp lainnya.",
+    "description": "Ini adalah Bot WhatsApp Confess",
     "main": "Quiet.js",
     "scripts": {
         "authhor": "QuietArtx",
         "license": "MIT",
         "start": "node Quiet.js"
     },
-
     "dependencies": {
         "@whiskeysockets/baileys": "npm:@fizzxydev/baileys-pro",
         "axios": "^1.4.0",
         "chalk": "^4.1.2",
+        "moment": "^2.30.1",
+        "moment-duration-format": "^2.3.2",
+        "node-fetch": "^2.7.0",
         "pino": "^8.14.1",
-        "readline": "1.3.0"
+        "readline": "1.3.0",
+        "sharp": "^0.32.6"
     }
 }
