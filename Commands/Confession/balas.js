@@ -42,7 +42,7 @@ module.exports = {
 
         await quiet.sendMessage(entry.from, {
             text: 
-`📬 *Balasan dari confession ID ${id}:*
+`📬 *Balasan dari Confession ID ${id}:*
 
 "${content}"`
         });
