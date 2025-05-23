@@ -92,6 +92,21 @@ module.exports = async (quiet, m) => {
                   ],
               },
               {
+                title: '📁 Utils',
+                rows: [
+                  {
+                    title: 'Help',
+                    rowId: 'l_help',
+                    description: 'Menampilkan pesam bantuan seluruh Command'
+                  },
+                  {
+                    title: 'Setbot',
+                    rowId: 'l_setbot',
+                    description: 'Mengatur Nama, Bio, Profle Picture'
+                  }
+                ]
+              },
+              {
                 title: '🖥️ Developer',
                 rows: [
                   {
