@@ -10,15 +10,13 @@ module.exports = {
 
     const imageUrl = "https://i.ibb.co/PZmp4jZ0/Red-And-Beige-Handdrawn-Illustration-Valentine-s-Day-Facebook-Post-20250523-095231-0000.png";
 
-    // 1. Kirim banner image terlebih dahulu
     await quiet.sendMessage(sender, {
       image: { url: imageUrl },
     }, { quoted: msg });
 
-    // 2. Kirim list menu
     await quiet.sendMessage(sender, {
       text: 'Silakan pilih salah satu menu berikut:',
-      title: '━━ ⭑ QuietWhisper Menu ⭑━━`',
+      title: `━━━ ⭑ QuietWhisper Menu ⭑━━━`,
       buttonText: 'Pilih Menu',
       sections: [
         {
