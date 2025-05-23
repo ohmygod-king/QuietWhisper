@@ -5,14 +5,22 @@ module.exports = {
   description: 'Bantuan umum',
   category: 'Utils',
   async execute(quiet, msg) {
-    const helpMsg = generateHelpMessage();
     const sender = msg.key.remoteJid;
+    const helpMsg = generateHelpMessage();
+
     const imageUrl = "https://i.ibb.co/PZmp4jZ0/Red-And-Beige-Handdrawn-Illustration-Valentine-s-Day-Facebook-Post-20250523-095231-0000.png";
 
+    // 1. Kirim banner image terlebih dahulu
     await quiet.sendMessage(sender, {
       image: { url: imageUrl },
-      caption: helpMsg,
-      footer: "Pilih opsi di bawah",
+      caption: `━━ ⭑ QuietWhisper Menu ⭑━━`
+    }, { quoted: msg });
+
+    // 2. Kirim list menu
+    await quiet.sendMessage(sender, {
+      text: 'Silakan pilih salah satu menu berikut:',
+      footer: 'QuietWhisper Bot',
+      title: '📖 Daftar Menu',
       buttonText: 'Pilih Menu',
       sections: [
         {
@@ -28,12 +36,12 @@ module.exports = {
             {
               title: 'Help',
               rowId: 'l_help',
-              description: 'Menampilkan pesam bantuan seluruh Command'
+              description: 'Menampilkan seluruh command bot'
             },
             {
               title: 'Setbot',
               rowId: 'l_setbot',
-              description: 'Mengatur Nama, Bio, Profle Picture'
+              description: 'Ubah nama, bio, atau foto profil bot'
             }
           ]
         },
@@ -41,7 +49,7 @@ module.exports = {
           title: '🖥️ Developer',
           rows: [
             {
-              title: 'Github',
+              title: 'GitHub',
               rowId: 'l_github',
               description: 'Prince | @ohmygod-king'
             },
@@ -52,8 +60,7 @@ module.exports = {
             }
           ]
         }
-      ],
-      headerType: 1
-    });
+      ]
+    }, { quoted: msg });
   }
 };
