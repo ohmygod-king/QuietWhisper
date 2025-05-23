@@ -7,7 +7,7 @@ module.exports = {
   async execute(quiet, msg) {
     const helpMsg = generateHelpMessage();
     const sender = msg.key.remoteJid;
-    const imageUrl = "https://i.ibb.co/Jj6BtnMP/18718d99139f6b7c22328fa298d3679a.jpg";
+    const imageUrl = "https://i.ibb.co/PZmp4jZ0/Red-And-Beige-Handdrawn-Illustration-Valentine-s-Day-Facebook-Post-20250523-095231-0000.png";
 
     await quiet.sendMessage(sender, {
       image: { url: imageUrl },
