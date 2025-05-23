@@ -37,7 +37,8 @@ module.exports = async (quiet, m) => {
     const senderID = sender.split('@')[0];
     const body = msg.message.conversation || msg.message.extendedTextMessage?.text || "";
     const args = body.trim().split(/ +/);
-    const commandName = args[0]?.startsWith('!') ? args.shift().slice(1).toLowerCase() : null;
+    const prefix = c.prefix;
+    const commandName = args[0]?.startsWith(prefix) ? args.shift().slice(1).toLowerCase() : null;
 
     if (msg.message?.listResponseMessage) {
       const rowId = msg.message.listResponseMessage.singleSelectReply.selectedRowId;
