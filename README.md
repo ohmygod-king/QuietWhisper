@@ -57,11 +57,11 @@ QuietWhisper/
 │   └── Confession/ 
 │       ├── balas.js  # Membalas pesan Confess 
 │       └── confess.js  # Mengirim pesan Confess
-│ ├── Data/
+├── Data/
 │   └── confessions.json  # Menyimpan data Confess
-│ ├── Handlers/
-│   └── message.j
-│ ├── Config.js     # Konfigurasi bot
+├── Handlers/
+│   └── message.js
+├── Config.js     # Konfigurasi bot
 ├── Quiet.js
 ├── package.json
 ```
