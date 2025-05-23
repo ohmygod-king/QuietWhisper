@@ -4,10 +4,12 @@ const config = {
   botName: "QuietWhisper",
 }
 
-config.welcomeMessage = (sender) => `
+config.welcomeMessage = (msg) => {
+  const name = msg.pushName || msg.key.remoteJid.split('@')[0];
+  return `
 ───  ${config.botName}  ───
 
-Halo, *${sender.split('@')[0]}*.
+Halo, *${name}*.
 Selamat datang!
 
 Kirim pesan rahasia secara anonim ke siapa pun, tanpa mengungkap identitasmu.
@@ -21,6 +23,6 @@ Silahkan pilih menu untuk melanjutkan.
 
 Terima kasih telah menggunakan ${config.botName}.
 Jaga etika, gunakan fitur ini dengan bijak.
-`
+`}
 
-module.exports = config
+module.exports = config;
