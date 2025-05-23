@@ -21,7 +21,7 @@ module.exports = {
     const target = args[0];
     const content = args.slice(1).join(' ');
     const prefix = c.prefix;
-    const imageBanner = "https://i.ibb.co/RTrTGdW1/banner.png"
+    const imageBanner = "https://i.ibb.co/RTrTGdW1/banner.png";
 
     if (!target || !content || content.length > 500) {
       return quiet.sendMessage(sender, { text: '❌ Format salah!\nContoh: !confess 628xxx Pesanmu (maks 500 karakter)' });
