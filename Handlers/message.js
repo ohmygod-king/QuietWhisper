@@ -45,17 +45,17 @@ module.exports = async (quiet, m) => {
 
       switch (rowId) {
         case 'l_confess':
-          await quiet.sendMessage(sender, { text: 'Ketik !confess <nomor> <pesan> untuk mengirim pesan rahasia.' });
+          await quiet.sendMessage(sender, { text: 'Ketik !confess <nomor> <pesan> untuk mengirim pesan rahasia.\n> Contoh: !confess 628xxxx hai cantik' });
           break;
         case 'l_balas':
-          await quiet.sendMessage(sender, { text: `Ketik !balas <nomor> <pesan> untuk membalas pesan rahasia.` });
+          await quiet.sendMessage(sender, { text: `Ketik !balas <nomor> <pesan> untuk membalas pesan rahasia.\n> Contoh: !balas ABC12 hai ganteng` });
           break;
         case 'l_setbot':
           await quiet.sendMessage(sender, { text: `Gunakan:
-• *!setbot pp* (reply gambar)
-• *!setbot pp <url>*
-• *!setbot name <nama>*
-• *!setbot bio <status>*` });
+• !setbot pp (reply gambar)
+• !setbot pp <url>
+• !setbot name <nama>
+• !setbot bio <status>` });
           break;
         case 'l_github':
           await quiet.sendMessage(sender, { text: 'https://github.com/ohmygod-king' });
