@@ -45,10 +45,10 @@ module.exports = async (quiet, m) => {
 
       switch (rowId) {
         case 'l_confess':
-          await quiet.sendMessage(sender, { text: 'Ketik *!confess <nomor> <pesan>* untuk mengirim pesan rahasia.' });
+          await quiet.sendMessage(sender, { text: 'Ketik !confess <nomor> <pesan> untuk mengirim pesan rahasia.' });
           break;
         case 'l_balas':
-          await quiet.sendMessage(sender, { text: 'Ketik *!balas <nomor> <pesan>* untuk membalas pesan rahasia.' });
+          await quiet.sendMessage(sender, { text: `Ketik !balas <nomor> <pesan> untuk membalas pesan rahasia.` });
           break;
         case 'l_setbot':
           await quiet.sendMessage(sender, { text: `Gunakan:
