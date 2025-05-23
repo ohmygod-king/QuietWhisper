@@ -52,9 +52,10 @@ ${prefix}balas ${id} Pesanmu
 > ID Confess: ${id}
 ────────────────────────`;
 
-    const imageBanner = "https://i.ibb.co/RTrTGdW1/banner.png";
+    const imagePath = path.resolve(__dirname, '../../.assets/banner.png');
+    
     await quiet.sendMessage(recipient, {
-      image: { url: imageBanner },
+      image: { url: imagePath },
       text: replyMsg
     });
 
