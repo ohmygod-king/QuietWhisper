@@ -13,14 +13,12 @@ module.exports = {
     // 1. Kirim banner image terlebih dahulu
     await quiet.sendMessage(sender, {
       image: { url: imageUrl },
-      caption: `━━ ⭑ QuietWhisper Menu ⭑━━`
     }, { quoted: msg });
 
     // 2. Kirim list menu
     await quiet.sendMessage(sender, {
       text: 'Silakan pilih salah satu menu berikut:',
-      footer: 'QuietWhisper Bot',
-      title: '📖 Daftar Menu',
+      title: '━━ ⭑ QuietWhisper Menu ⭑━━`',
       buttonText: 'Pilih Menu',
       sections: [
         {
