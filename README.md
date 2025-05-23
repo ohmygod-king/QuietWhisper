@@ -85,7 +85,7 @@ Pull request terbuka untuk fitur baru, perbaikan bug, atau ide kreatif lainnya. 
 
 ## ✦ Lisensi
 
-MIT License © 2025 — [QuietArtx]
+MIT License © 2025 — [QuietArtx].
 
 ---
 
