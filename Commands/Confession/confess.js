@@ -43,7 +43,7 @@ module.exports = {
             text: 
 `📩 *Pesan Rahasia Untukmu!*
 
-"${content}"
+"*${content}*"
 
 ID: ${id}
 ➤ Balas dengan: *!balas ${id} pesanmu*`
