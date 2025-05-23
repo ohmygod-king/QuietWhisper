@@ -58,7 +58,7 @@ module.exports = {
     await quiet.sendMessage(`${target}@s.whatsapp.net`, {
       image: { url: imageBanner },
       text:
-`───── Pesan Rahasia ─────
+`─────  Pesan Rahasia  ─────
 
 "${content}"
 
