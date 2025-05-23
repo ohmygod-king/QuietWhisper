@@ -13,11 +13,47 @@ module.exports = {
       image: { url: imageUrl },
       caption: helpMsg,
       footer: "Pilih opsi di bawah",
-      buttons: [
-        { buttonId: 'b_confess', buttonText: { displayText: 'Kirim Confess' }, type: 1 },
-        { buttonId: 'b_balas', buttonText: { displayText: 'Balas Rahasia' }, type: 1 }
+      buttonText: 'Pilih Menu',
+      sections: [
+        {
+          title: '✉️ Fitur Confess',
+          rows: [
+            { title: 'Kirim Confess', rowId: 'l_confess', description: 'Kirim pesan anonim ke seseorang' },
+            { title: 'Balas Confess', rowId: 'l_balas', description: 'Balas pesan anonim yang Anda terima' },
+          ],
+        },
+        {
+          title: '📁 Utils',
+          rows: [
+            {
+              title: 'Help',
+              rowId: 'l_help',
+              description: 'Menampilkan pesam bantuan seluruh Command'
+            },
+            {
+              title: 'Setbot',
+              rowId: 'l_setbot',
+              description: 'Mengatur Nama, Bio, Profle Picture'
+            }
+          ]
+        },
+        {
+          title: '🖥️ Developer',
+          rows: [
+            {
+              title: 'Github',
+              rowId: 'l_github',
+              description: 'Prince | @ohmygod-king'
+            },
+            {
+              title: 'Discord',
+              rowId: 'l_discord',
+              description: 'QuietxStore'
+            }
+          ]
+        }
       ],
-      headerType: 4
+      headerType: 1
     });
   }
 };
