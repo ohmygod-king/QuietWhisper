@@ -60,13 +60,14 @@ module.exports = {
       text:
 `─────  Pesan Rahasia  ─────
 
-"${content}"
+*"${content}"*
 
-> ID Confess : ${id}
 Balas dengan perintah:
 ${prefix}balas ${id} Pesanmu
 
 [!] Pesan ini ditulis oleh seseorang, bot hanya menyampaikan
+
+> ID Confess: ${id}
 ────────────────────────`
     });
 
