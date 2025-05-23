@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const confessionsPath = path.resolve(__dirname, '../../Data/confessions.json');
 const cooldownPath = path.resolve(__dirname, '../../Data/balasCooldown.json');
+const c = require("../../Config.js");
 
 if (!fs.existsSync(cooldownPath)) fs.writeFileSync(cooldownPath, '{}', 'utf-8');
 
@@ -13,6 +14,7 @@ module.exports = {
     const sender = msg.key.remoteJid;
     const id = args[0]?.toUpperCase();
     const content = args.slice(1).join(' ');
+    const prefix = c.prefix;
 
     if (!id || !content || content.length > 500) {
       return quiet.sendMessage(sender, { text: '❌ Format salah!\nContoh: !balas ABC12 Pesanmu (maks 500 karakter)' });
@@ -37,7 +39,17 @@ module.exports = {
 
     const recipient = sender === entry.from ? entry.to : entry.from;
 
-    const replyMsg = `📨 *Balasan anonim pada Confession ID ${id}:*\n\n"${content}"`;
+    const replyMsg = 
+`───── Balasan ─────
+
+"${content}"
+
+> ID Confess : ${id}
+Untuk saling balas, ketik:
+${prefix}balas ${id} aku sayang kamu
+
+[!] Pesan ini ditulis oleh seseorang, bot hanya menyampaikan
+────────────────────────`;
 
     await quiet.sendMessage(recipient, { text: replyMsg });
 
