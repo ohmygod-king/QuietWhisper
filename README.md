@@ -3,8 +3,6 @@
   <img src=".assets/banner.png" alt="Banner" width="100%" />
 </p>
 
-<h1 align="center">QuietWhisper</h1>
-
 # ❖ QuietWhisper ┋ WhatsApp Confession Bot
 
 **QuietWhisper** adalah bot WhatsApp berbasis Node.js menggunakan Baileys Library yang memungkinkan pengguna mengirim _confession_ atau pesan rahasia secara anonim ke pengguna WhatsApp lainnya.
