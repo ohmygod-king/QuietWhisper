@@ -2,7 +2,7 @@ const config = {
   owner: ["628xxxxxx"],
   prefix: "!",
   botName: "QuietWhisper",
-}
+};
 
 config.welcomeMessage = (sender) => `
 ───  ${config.botName}  ───
@@ -21,6 +21,6 @@ Silahkan pilih menu untuk melanjutkan.
 
 Terima kasih telah menggunakan ${config.botName}.
 Jaga etika, gunakan fitur ini dengan bijak.
-`
+`;
 
-module.exports = config
+module.exports = config;
