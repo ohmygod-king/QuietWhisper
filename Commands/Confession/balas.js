@@ -42,13 +42,14 @@ module.exports = {
     const replyMsg = 
 `─────  Balasan  ─────
 
-"${content}"
+*"${content}"*
 
-> ID Confess : ${id}
 Untuk saling balas, ketik:
-${prefix}balas ${id} aku sayang kamu
+${prefix}balas ${id} Pesanmu
 
 [!] Pesan ini ditulis oleh seseorang, bot hanya menyampaikan
+
+> ID Confess: ${id}
 ────────────────────────`;
 
     const imageBanner = "https://i.ibb.co/RTrTGdW1/banner.png";
