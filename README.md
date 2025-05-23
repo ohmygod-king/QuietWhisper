@@ -28,6 +28,9 @@
 - **Multi-file Config**  
   Pengaturan seperti owner, pesan welcome, dan lainnya disimpan dalam `config.js` agar mudah dikustomisasi.
 
+- **Configurasi Bot**
+  Mengubah Nama, Profile dan About me dengan sangat mudah hanya dengan menggunakan command yang tersedia
+
 ---
 
 ## ✦ Instalasi
@@ -61,6 +64,9 @@ QuietWhisper/
 │   └── Confession/ 
 │       ├── balas.js  # Membalas pesan Confess 
 │       └── confess.js  # Mengirim pesan Confess
+│   └── Utils/
+│       ├── help.js  # Menampilkan semua command
+│       └── setbot.js  # Mengatur tampilan bot
 ├── Data/
 │   └── confessions.json  # Menyimpan data Confess
 ├── Handlers/
