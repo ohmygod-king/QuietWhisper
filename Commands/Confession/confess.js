@@ -21,6 +21,7 @@ module.exports = {
     const target = args[0];
     const content = args.slice(1).join(' ');
     const prefix = c.prefix;
+    const imageBanner = "https://i.ibb.co/RTrTGdW1/banner.png"
 
     if (!target || !content || content.length > 500) {
       return quiet.sendMessage(sender, { text: '❌ Format salah!\nContoh: !confess 628xxx Pesanmu (maks 500 karakter)' });
@@ -54,13 +55,19 @@ module.exports = {
     await new Promise(r => setTimeout(r, 1200));
 
     await quiet.sendMessage(`${target}@s.whatsapp.net`, {
+      image: { url: imageBanner },
       text:
-`📩 *Pesan Rahasia Untukmu!*
+`───── Pesan Rahasia ─────
 
-"*${content}*"
+"${content}"
 
-ID: ${id}
-➤ Balas dengan: *${prefix}balas ${id} pesanmu*`
+ID Pengirim : ${id}
+
+Balas dengan perintah:
+${prefix}balas ${id} Pesanmu
+
+[!] Pesan ini ditulis oleh seseorang, bot hanya menyampaikan
+────────────────────────`
     });
 
     await quiet.sendMessage(sender, {
