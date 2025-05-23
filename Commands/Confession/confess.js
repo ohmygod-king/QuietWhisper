@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const confessionsPath = path.resolve(__dirname, '../../Data/confessions.json');
 const cooldownPath = path.resolve(__dirname, '../../Data/confessCooldown.json');
+const c = require('../../Config.js');
 
 if (!fs.existsSync(confessionsPath)) fs.writeFileSync(confessionsPath, '{}', 'utf-8');
 if (!fs.existsSync(cooldownPath)) fs.writeFileSync(cooldownPath, '{}', 'utf-8');
@@ -19,6 +20,7 @@ module.exports = {
         const sender = msg.key.remoteJid;
         const target = args[0];
         const content = args.slice(1).join(' ');
+        const prefix = c.prefix;
 
         if (!target || !content || content.length > 500) {
             return quiet.sendMessage(sender, { text: '❌ Format salah!\nContoh: !confess 628xxx Pesanmu (maks 500 karakter)' });
@@ -46,7 +48,7 @@ module.exports = {
 "*${content}*"
 
 ID: ${id}
-➤ Balas dengan: *!balas ${id} pesanmu*`
+➤ Balas dengan: *${prefix}balas ${id} pesanmu*`
         });
 
         await quiet.sendMessage(sender, {
