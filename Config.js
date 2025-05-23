@@ -18,6 +18,7 @@ Silahkan pilih menu untuk melanjutkan.
 ──── Info Bot ────
 • Bot : *${config.botName}*
 • Owner : *${config.owner[0]}*
+• Prefix : *${config.prefix}*
 
 Terima kasih telah menggunakan ${config.botName}.
 Jaga etika, gunakan fitur ini dengan bijak.
