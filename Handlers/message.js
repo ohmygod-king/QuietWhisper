@@ -50,12 +50,11 @@ module.exports = async (quiet, m) => {
           await quiet.sendMessage(sender, { text: 'Ketik *!balas <nomor> <pesan>* untuk membalas pesan rahasia.' });
           break;
         case 'l_setbot':
-          const setbotCmd = commands.get('setbot');
-          if (setbotCmd) {
-            await setbotCmd.execute(quiet, msg, args);
-          } else {
-            await quiet.sendMessage(sender, { text: '❌ Commands setbot tidak ditemukan!'} );
-          }
+          await quiet.sendMessage(sender, { text: `Gunakan:
+• *!setbot pp* (reply gambar)
+• *!setbot pp <url>*
+• *!setbot name <nama>*
+• *!setbot bio <status>*` });
           break;
         case 'l_github':
           await quiet.sendMessage(sender, { text: 'https://github.com/ohmygod-king' });
