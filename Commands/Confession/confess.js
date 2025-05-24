@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios'); // tambahkan ini
 const confessionsPath = path.resolve(__dirname, '../../Data/confessions.json');
 const cooldownPath = path.resolve(__dirname, '../../Data/confessCooldown.json');
 const c = require('../../Config.js');
@@ -8,8 +9,8 @@ if (!fs.existsSync(confessionsPath)) fs.writeFileSync(confessionsPath, '{}', 'ut
 if (!fs.existsSync(cooldownPath)) fs.writeFileSync(cooldownPath, '{}', 'utf-8');
 
 function generateId(length = 5) {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 }
 
 module.exports = {
@@ -52,24 +53,36 @@ module.exports = {
     fs.writeFileSync(cooldownPath, JSON.stringify(cooldown, null, 2));
 
     await new Promise(r => setTimeout(r, 1200));
-    
-    const imagePath = path.resolve(__dirname, '../../.assets/banner.png');
-    
-    await quiet.sendMessage(`${target}@s.whatsapp.net`, {
-      image: { url: imagePath },
-      text:
-`─────  Pesan Rahasia  ─────
 
+    const imageUrl = 'https://i.ibb.co/KxPHTyXs/incoming.png';
+    
+    await quiet.sendMessage(sender, { text: `Sedang mengirim...`}, { quoted: msg });
+
+    try {
+      const res = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+      const buffer = Buffer.from(res.data, 'binary');
+
+      await quiet.sendMessage(`${target}@s.whatsapp.net`, {
+        image: buffer,
+        mimetype: 'image/jpeg',
+        caption:
+`──────  Pesan Rahasia  ──────
+
+Dari: *Sesorang*
+Pesan: 
 *"${content}"*
 
-Balas dengan perintah:
-${prefix}balas ${id} Pesanmu
+> Balas dengan perintah:
+> ${prefix}balas ${id} Pesanmu
 
-[!] Pesan ini ditulis oleh seseorang, bot hanya menyampaikan
-
+> [!] Pesan ini ditulis oleh seseorang, bot hanya menyampaikan
 > ID Confess: ${id}
 ────────────────────────`
-    });
+      });
+    } catch (err) {
+      await quiet.sendMessage(sender, { text: `❌ Gagal mengirim gambar: ${err.message}` });
+      return;
+    }
 
     await quiet.sendMessage(sender, {
       text: `✅ Confession terkirim secara anonim ke ${target}\nID: ${id}`
