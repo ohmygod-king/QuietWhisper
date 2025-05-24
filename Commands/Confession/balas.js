@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 const confessionsPath = path.resolve(__dirname, '../../Data/confessions.json');
 const cooldownPath = path.resolve(__dirname, '../../Data/balasCooldown.json');
 const c = require("../../Config.js");
@@ -40,24 +41,35 @@ module.exports = {
     const recipient = sender === entry.from ? entry.to : entry.from;
 
     const replyMsg = 
-`─────  Balasan  ─────
+`──────  Balasan  ──────
 
+Pesan:
 *"${content}"*
 
-Untuk saling balas, ketik:
-${prefix}balas ${id} Pesanmu
+> Untuk saling balas, ketik:
+> ${prefix}balas ${id} Pesanmu
 
-[!] Pesan ini ditulis oleh seseorang, bot hanya menyampaikan
-
+> [!] Pesan ini ditulis oleh seseorang, bot hanya menyampaikan
 > ID Confess: ${id}
 ────────────────────────`;
 
-    const imagePath = path.resolve(__dirname, '../../.assets/banner.png');
+    const imageUrl = 'https://i.ibb.co/hx4d8014/reply.png';
     
-    await quiet.sendMessage(recipient, {
-      image: { url: imagePath },
-      text: replyMsg
-    });
+    await quiet.sendMessage(sender, { text: `Mengirim balassn...`}, { quoted: msg }  );
+
+    try {
+      const res = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+      const buffer = Buffer.from(res.data, 'binary');
+
+      await quiet.sendMessage(recipient, {
+        image: buffer,
+        mimetype: 'image/jpeg',
+        caption: replyMsg
+      });
+    } catch (err) {
+      await quiet.sendMessage(sender, { text: `❌ Gagal mengirim gambar: ${err.message}` });
+      return;
+    }
 
     if (!entry.messages) entry.messages = [];
     entry.messages.push({
