@@ -1,17 +1,12 @@
 const fs = require('fs');
 const path = require('path');
-const axios = require('axios'); // tambahkan ini
+const axios = require('axios');
 const confessionsPath = path.resolve(__dirname, '../../Data/confessions.json');
 const cooldownPath = path.resolve(__dirname, '../../Data/confessCooldown.json');
 const c = require('../../Config.js');
 
 if (!fs.existsSync(confessionsPath)) fs.writeFileSync(confessionsPath, '{}', 'utf-8');
 if (!fs.existsSync(cooldownPath)) fs.writeFileSync(cooldownPath, '{}', 'utf-8');
-
-function generateId(length = 5) {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-}
 
 module.exports = {
   name: 'confess',
@@ -42,8 +37,14 @@ module.exports = {
       return quiet.sendMessage(sender, { text: '⏳ Tunggu 1 menit sebelum mengirim confess lagi.' });
     }
 
-    const id = generateId();
+    let lastId = 0;
     const data = JSON.parse(fs.readFileSync(confessionsPath));
+    const numericIds = Object.keys(data)
+      .map(key => parseInt(key.replace('#', '')))
+      .filter(num => !isNaN(num));
+    lastId = numericIds.length > 0 ? Math.max(...numericIds) : 0;
+
+    const id = `#${lastId + 1}`;
 
     data[id] = {
       from: sender,
