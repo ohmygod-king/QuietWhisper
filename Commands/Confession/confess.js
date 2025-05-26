@@ -95,7 +95,7 @@ Pesan:
     }
 
     await quiet.sendMessage(sender, {
-      text: `✅ Confession terkirim secara anonim ke ${formattedTarget}\nID: ${id}`
+      text: `✅ Confession terkirim secara anonim ke ${formattedTarget}\nID Confess: ${id}`
     });
   }
 };
