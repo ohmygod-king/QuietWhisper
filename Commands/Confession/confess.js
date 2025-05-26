@@ -24,7 +24,16 @@ module.exports = {
     const prefix = c.prefix;
 
     if (!target || !content || content.length > 500) {
-      return quiet.sendMessage(sender, { text: '❌ Format salah!\nContoh: !confess 628xxx Pesanmu (maks 500 karakter)' });
+      return quiet.sendMessage(sender, { text: '❌ Format salah!\nContoh: !confess 08xxx Pesanmu (maks 500 karakter)' });
+    }
+
+    let formattedTarget = target;
+    if (target.startsWith('08')) {
+      formattedTarget = '62' + target.slice(1);
+    } else if (target.startsWith('62')) {
+      formattedTarget = target;
+    } else if (target.endsWith('@s.whatsapp.net')) {
+      formattedTarget = target.replace('@s.whatsapp.net', '');
     }
 
     const cooldown = JSON.parse(fs.readFileSync(cooldownPath));
@@ -38,7 +47,7 @@ module.exports = {
 
     data[id] = {
       from: sender,
-      to: `${target}@s.whatsapp.net`,
+      to: `${formattedTarget}@s.whatsapp.net`,
       messages: [
         {
           sender: 'from',
@@ -62,7 +71,7 @@ module.exports = {
       const res = await axios.get(imageUrl, { responseType: 'arraybuffer' });
       const buffer = Buffer.from(res.data, 'binary');
 
-      await quiet.sendMessage(`${target}@s.whatsapp.net`, {
+      await quiet.sendMessage(`${formattedTarget}@s.whatsapp.net`, {
         image: buffer,
         mimetype: 'image/jpeg',
         caption:
@@ -85,7 +94,7 @@ Pesan:
     }
 
     await quiet.sendMessage(sender, {
-      text: `✅ Confession terkirim secara anonim ke ${target}\nID: ${id}`
+      text: `✅ Confession terkirim secara anonim ke ${formattedTarget}\nID: ${id}`
     });
   }
 };
