@@ -67,6 +67,8 @@ QuietWhisper/
 │   └── Utils/
 │       ├── help.js  # Menampilkan semua command
 │       └── setbot.js  # Mengatur tampilan bot
+│       └── ban.js  # Banned Users from bot
+│       └── unban.js   # Unbanned users from bot
 ├── Data/
 │   └── confessions.json  # Menyimpan data Confess
 ├── Handlers/
