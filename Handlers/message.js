@@ -132,6 +132,21 @@ module.exports = async (quiet, m) => {
         console.log(`[Pesan Baru] Dari: ${msg.pushName || sender} >> ${shortBody}`);
         setTimeout(() => recentSenders.delete(sender), 10000);
     }
+    
+    const bannedPath = path.resolve(__dirname, '../Data/banned.json');
+    if (!fs.existsSync(bannedPath)) fs.writeFileSync(bannedPath, '[]', 'utf-8');
+    const bannedUsers = JSON.parse(fs.readFileSync(bannedPath));
+    if (bannedUsers.includes(sender)) {
+      const bannedTagPath = path.resolve(__dirname, '../Data/bannedTag.json');
+      if (!fs.existsSync(bannedTagPath)) fs.writeFileSync(bannedTagPath, '{}', 'utf-8');
+      const bannedTag = JSON.parse(fs.readFileSync(bannedTagPath));
+      if (!bannedTag[sender]) {
+        await quiet.sendMessage(sender, { text: '❌ Kamu telah dibanned dari penggunaan bot ini.' });
+        bannedTag[sender] = true;
+        fs.writeFileSync(bannedTagPath, JSON.stringify(bannedTag, null, 2));
+      }
+      return;
+    }
 
     if (!commandName) return;
     const command = commands.get(commandName);
