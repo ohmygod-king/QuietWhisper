@@ -37,6 +37,7 @@ module.exports = {
       return quiet.sendMessage(sender, { text: '⏳ Tunggu 1 menit sebelum mengirim confess lagi.' });
     }
 
+    // Dapatkan ID terakhir
     let lastId = 0;
     const data = JSON.parse(fs.readFileSync(confessionsPath));
     const numericIds = Object.keys(data)
@@ -64,7 +65,7 @@ module.exports = {
 
     await new Promise(r => setTimeout(r, 1200));
 
-    const imageUrl = 'https://i.ibb.co/KxPHTyXs/incoming.png';
+    const imageUrl = 'https://i.ibb.co/wrZNysq4/incoming.png';
     
     await quiet.sendMessage(sender, { text: `Sedang mengirim...`}, { quoted: msg });
 
@@ -74,7 +75,6 @@ module.exports = {
 
       await quiet.sendMessage(`${formattedTarget}@s.whatsapp.net`, {
         image: buffer,
-        mimetype: 'image/jpeg',
         caption:
 `──────  Pesan Rahasia  ──────
 
@@ -95,7 +95,7 @@ Pesan:
     }
 
     await quiet.sendMessage(sender, {
-      text: `✅ Confession terkirim secara anonim ke ${formattedTarget}\nID Confess: ${id}`
+      text: `✅ Confession terkirim secara anonim ke ${formattedTarget}\nID: ${id}`
     });
   }
 };
