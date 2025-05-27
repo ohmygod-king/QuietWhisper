@@ -28,7 +28,7 @@
 - **Multi-file Config**  
   Pengaturan seperti owner, pesan welcome, dan lainnya disimpan dalam `config.js` agar mudah dikustomisasi.
 
-- **Configurasi Bot**
+- **Configurasi Bot**  
   Mengubah Nama, Profile dan About me dengan sangat mudah hanya dengan menggunakan command yang tersedia
 
 ---
