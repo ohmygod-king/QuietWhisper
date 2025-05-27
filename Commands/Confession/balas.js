@@ -53,7 +53,7 @@ Pesan:
 > ID Confess: ${id}
 ────────────────────────`;
 
-    const imageUrl = 'https://i.ibb.co/hx4d8014/reply.png';
+    const imageUrl = 'https://i.ibb.co/B5YNDFJr/reply.png';
     
     await quiet.sendMessage(sender, { text: `Mengirim balassn...`}, { quoted: msg }  );
 
@@ -63,7 +63,6 @@ Pesan:
 
       await quiet.sendMessage(recipient, {
         image: buffer,
-        mimetype: 'image/jpeg',
         caption: replyMsg
       });
     } catch (err) {
