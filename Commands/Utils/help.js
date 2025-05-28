@@ -8,7 +8,7 @@ module.exports = {
     const sender = msg.key.remoteJid;
     const helpMsg = generateHelpMessage();
 
-    const imageUrl = "https://i.ibb.co/cXbYtLQY/profile.png";
+    const imageUrl = "https://i.ibb.co/d0rqVm2Z/Quiet-Whisper-20250528-163720-0000.png";
 
     await quiet.sendMessage(sender, {
       image: { url: imageUrl },
