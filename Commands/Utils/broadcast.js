@@ -55,7 +55,7 @@ Pesan:
                 failed++;
             }
 
-            await delay(2000); // delay 2 detik per pesan
+            await delay(5000); // delay 2 detik per pesan
         }
 
         await quiet.sendMessage(msg.key.remoteJid, {
