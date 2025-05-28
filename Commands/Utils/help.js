@@ -8,7 +8,7 @@ module.exports = {
     const sender = msg.key.remoteJid;
     const helpMsg = generateHelpMessage();
 
-    const imageUrl = "https://i.ibb.co/PZmp4jZ0/Red-And-Beige-Handdrawn-Illustration-Valentine-s-Day-Facebook-Post-20250523-095231-0000.png";
+    const imageUrl = "https://i.ibb.co/cXbYtLQY/profile.png";
 
     await quiet.sendMessage(sender, {
       image: { url: imageUrl },
