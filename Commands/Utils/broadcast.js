@@ -19,7 +19,7 @@ module.exports = {
         }
 
         const messageParts = args;
-        const imageUrl = "";
+        const imageUrl = "https://i.ibb.co/N2jvKMyZ/broadcast.png";
         const textMessage = messageParts.join(' ');
         if (!textMessage) {
             return await quiet.sendMessage(msg.key.remoteJid, {
