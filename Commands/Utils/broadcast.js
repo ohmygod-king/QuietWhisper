@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { downloadContentFromMessage } = require('@whiskeysockets/baileys'); // pastikan sudah di-setup
+const axios = require('axios');
+const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
 
 module.exports = {
     name: 'broadcast',
@@ -29,7 +30,7 @@ module.exports = {
         const delay = (ms) => new Promise(res => setTimeout(res, ms));
         let success = 0;
         let failed = 0;
-        let idCounter = Math.floor(100 + Math.random() * 900); // bikin ID random #100-999
+        let idCounter = Math.floor(100 + Math.random() * 900);
 
         await quiet.sendMessage(msg.key.remoteJid, { text: `✅ Memulai broadcast gambar ke ${users.length} pengguna...` });
 
@@ -44,18 +45,21 @@ Pesan:
 ────────────────────────`;
 
             try {
-                await quiet.sendMessage(user, {
-                    image: { url: imageUrl },
+              const res = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+              const buffer = Buffer.from(res.data, 'binary');
+              
+              await quiet.sendMessage(user, {
+                    image: buffer,
                     caption: broadcastText
-                });
-                console.log(`✔️ Broadcast terkirim ke ${user}`);
-                success++;
+              });
+              console.log(`✔️ Broadcast terkirim ke ${user}`);
+              success++;
             } catch (err) {
                 console.error(`❌ Gagal kirim ke ${user}:`, err);
                 failed++;
             }
 
-            await delay(5000); // delay 2 detik per pesan
+            await delay(5000);
         }
 
         await quiet.sendMessage(msg.key.remoteJid, {
