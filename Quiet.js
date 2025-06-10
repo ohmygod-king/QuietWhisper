@@ -35,7 +35,7 @@ async function connectToWhatsApp() {
     if (usePairingCode && !quiet.authState.creds.registered) {
         console.log(chalk.green("☘ Masukkan Nomor Dengan Awalan 62"));
         const phoneNumber = await question("> ");
-        const code = await quiet.requestPairingCode(phoneNumber.trim(), "WHISPERR");
+        const code = await quiet.requestPairingCode(phoneNumber.trim(), "QUIETART");
         console.log(chalk.cyan(`🧩 Pairing Code: ${code}`));
     }
 
