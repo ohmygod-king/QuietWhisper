@@ -30,7 +30,6 @@ async function connectToWhatsApp() {
         printQRInTerminal: !usePairingCode,
         auth: state,
         browser: ["Ubuntu", "Chrome", "20.0.04"],
-        version: [2, 3000, 1015901307]
     });
 
     if (usePairingCode && !quiet.authState.creds.registered) {
